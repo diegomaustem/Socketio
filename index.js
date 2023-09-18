@@ -4,6 +4,9 @@ var http = require('http').createServer(app)
 var io = require('socket.io')(http)
 
 io.on('connection', (socket) => {
+    socket.on('disconnect', () => {
+        console.log('X desconectou:' + socket.id) 
+     })
     socket.on('mensagem', (data) => {
         socket.emit('resultado', data)
     })
